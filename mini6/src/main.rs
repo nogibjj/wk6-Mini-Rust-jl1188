@@ -4,7 +4,7 @@ use clap::Parser;
 #[clap(
     version = "1.0",
     author = "Selina Liu",
-    about = "Count distinct anagrams"
+    about = "Simplify File Path"
 )]
 struct Cli {
     #[clap(subcommand)]
@@ -14,7 +14,7 @@ struct Cli {
 #[derive(Parser)]
 enum Commands {
     #[clap(version = "1.0", author = "Selina Liu")]
-    Check {
+    Simplify {
         #[clap(short, long)]
         input: String,
     },
@@ -23,7 +23,7 @@ enum Commands {
 fn main() {
     let args = Cli::parse();
     match args.command {
-        Some(Commands::Check { input }) => {
+        Some(Commands::Simplify { input }) => {
             let result = mini6::simplify_path(input);
             println!("{}", result);
         }
